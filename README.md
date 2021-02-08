@@ -127,16 +127,50 @@
 #### 관련 문제
 [1.Calculator](https://github.com/KimUJin3359/List-Tree/tree/master/Calculator)
 - 사칙연산(+, -, \*, /)와 양의 정수로만 구성된 임의의 이진트리가 주어질 때, 이를 계산한 결과를 출력하는 문제
+- 까다로운 점
+  - 처음 입력받는 것이 연산자냐 숫자냐에 따라 추가 입력 여부가 달라짐
+    - space, new line을 기준으로 split해서 사용
+  - ascii 값 ' + ', ' - ', ' \* ', ' / '과 중복된 숫자가 나올 때 +와 43을 구분하는 방법
+    - input 배열을 3칸을 만들어 입력 받은 뒤의 숫자가 더 존재하는지를 판단해줌으로써 판별
 
 [2.Calculator2](https://github.com/KimUJin3359/List-Tree/tree/master/Calculator2)
+- 사칙연산(+, -, \*, /)와 양의 정수로만 구성된 임의의 이진트리가 주어질 때, 이 식의 유효성을 검사하는 문제
+- 유효성을 검사하는 문제이므로 0으로 나누느 경우는 고려하지 않음
+- 접근 방법
+  - 위의 계산기 코드를 바탕으로, 모든 계산을 끝낸 후 방문하지 않은 node가 있는지 없는지를 판단해줌
 
 [3.Heapsort](https://github.com/KimUJin3359/List-Tree/tree/master/Heapsort)
+- N개의 수가 주어졌을 떄, 이를 오름차순으로 정렬하는 문제
+- 접근 방법
+  - 기본적인 bubble sort, selection sort는 O(n ^ 2)의 시간복잡도를 가짐
+    - Time out
+  - priority queue를 구성하여, Heap Sort로 구현
+  - enqueue() : 해당 번째의 node에 삽입하여 조상 노드들과 크기를 비교하며 swap
+  - dequeue() : root를 반환 후, 맨 마지막에 존재하는 노드의 데이터를 root로 가져와 left, right 중 값이 더 작은 node와 swap
 
 [4.Inorder](https://github.com/KimUJin3359/List-Tree/tree/master/Inorder)
-
+- 특정 단어(또는 문장)를 트리 형태로 구성한 것을 inorder 형식으로 순회하여 각 노드를 읽는 문제
+- 해당 정점에 대한 정보는 해당 정점의 알파벳, 해당 정점의 왼쪽 자식, 오른쪽 자식의 정점번호가 차례대로 주어짐
+- 까다로운 점
+  - 입력받는 노드의 자식 유무에 따라 추가 입력 여부가 달라짐
+    - space, new line을 기준으로 split해서 사용
+  - 입력받는 값의 문자열, 숫자 처리 방법
+    - 숫자를 입력받으면 기존의 atoi와 같은 형태로 작동, 문자를 받으면 값을 그대로 반환
+  - 해당 node 번호에 대한 문자 값을 나중에 입력받음
+    - ex) 1 A 2 3
+    - 2번 3번 노드는 이미 선언되고 난 후에 그에 해당하는 문자 값을 입력 받음
+    - set_data 함수 구현 (해당 num에 해당하는 node를 찾아 data를 set)
+- 지금 생각하니 없어도 되는 부분
+  - 추가 입력되는 첫번째 노드는 무조건 왼쪽 노드이기 때문에 tree에 add_left, add_right를 따로 구현할 필요가 없었음
+    
 [5.Tree](https://github.com/KimUJin3359/List-Tree/tree/master/Tree)
+- 트리를 구성하여 inorder, preorder, postorder 및 levelorder에 따른 노드 값 출력
 
 [6.Zombie](https://github.com/KimUJin3359/List-Tree/tree/master/Zombie)
+- 보안관의 위치와 좀비의 위치가 주어질 때, 최소 시간으로 좀비에게 접근할 때 걸리는 시간을 구하는 문제
+- 접근 방법
+  - 이동 가능한 경우를 큰 값부터 정렬
+  - BFS를 통해 만족하는 경우를 찾으며 찾을 경우 종료
 
 
 
